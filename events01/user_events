@@ -13,7 +13,8 @@ CREATE TABLE user_events (
 
 
 
-SELECT COUNT(*) FROM user_events;
+SELECT * FROM user_events
+ORDER BY event_id;
 
 
 
@@ -22,3 +23,22 @@ SELECT
     COUNT(*) AS events_count
 FROM user_events
 GROUP BY event_type;
+
+
+
+SELECT
+    COUNT(*) FILTER (WHERE event_type = 'page_view') AS views,
+    COUNT(*) FILTER (WHERE event_type = 'add_to_cart') AS carts,
+    COUNT(*) FILTER (WHERE event_type = 'purchase') AS purchases,
+
+    ROUND(
+        COUNT(*) FILTER (WHERE event_type = 'add_to_cart') * 100.0 /
+        COUNT(*) FILTER (WHERE event_type = 'page_view'),
+    2) AS cart_rate,
+
+    ROUND(
+        COUNT(*) FILTER (WHERE event_type = 'purchase') * 100.0 /
+        COUNT(*) FILTER (WHERE event_type = 'add_to_cart'),
+    2) AS cart_to_purchase_rate
+
+FROM user_events;
