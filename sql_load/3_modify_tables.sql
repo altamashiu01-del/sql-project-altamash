@@ -18,7 +18,7 @@ Possible Errors:
             1. Find path by right-clicking a CSV file in VS Code and selecting “Copy Path”
 7. Paste the following into `PSQL Tool`, (with the CORRECT file path)
 
-\copy company_dim FROM '[Insert File Path]/company_dim.csv' WITH (FORMAT csv, HEADER true, DELIMITER ',', ENCODING 'UTF8');
+\copy user_events FROM 'C:\MOVIES\Excel_Data_Analytics_Course-main\SQL_Project 01\events01\user_events.csv;
 
 \copy skills_dim FROM '[Insert File Path]/skills_dim.csv' WITH (FORMAT csv, HEADER true, DELIMITER ',', ENCODING 'UTF8');
 

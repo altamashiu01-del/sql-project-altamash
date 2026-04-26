@@ -1,0 +1,24 @@
+DROP TABLE IF EXISTS user_events;
+
+CREATE TABLE user_events (
+    event_id INT,
+    user_id INT,
+    event_type TEXT,
+    event_date TEXT,
+    product_id INT,
+    amount NUMERIC,
+    traffic_source TEXT
+);
+
+
+
+
+SELECT COUNT(*) FROM user_events;
+
+
+
+SELECT 
+    event_type,
+    COUNT(*) AS events_count
+FROM user_events
+GROUP BY event_type;
